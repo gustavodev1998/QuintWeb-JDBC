@@ -1,6 +1,6 @@
 # :seedling: QuintWeb JDBC
 <h1 align="center">
-      <img alt="QuintWeb" src="Fase.2-SI2021si-G01/Images/layout.png" width="1000px" />
+      <img alt="QuintWeb" src="HelloJdbc/Images/layout.png" width="1000px"/>
 </h1>
 
 <br>
