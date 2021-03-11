@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>HelloJdbc</artifactId>
+		<groupId>si.jdbc.exemplos</groupId>
+		<version>1.0.0</version>
+	</parent>
+
+	<groupId>si.jdbc.exemplos.jdbc</groupId>
+	<artifactId>HelloQuery</artifactId>
+	<packaging>jar</packaging>
+	<name>HelloQuery</name>
+	<description>HelloJdbc project.</description>
+
+	<properties>
+		<MainClass>si.jdbc.exemplos.jdbc.ClienteQueryMain</MainClass>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- geração de JAR executável -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<archive>
+								<manifest>
+									<mainClass>
+										${MainClass}
+									</mainClass>
+								</manifest>
+							</archive>
+							<descriptorRefs>
+								<descriptorRef>jar-with-dependencies</descriptorRef>
+							</descriptorRefs>
+							<source>${maven.compiler.source}</source>
+							<target>${maven.compiler.target}</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<!-- execução com o comando mvn exec:java -->
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>${exec-maven-plugin}</version>
+				<configuration>
+					<mainClass>${MainClass}</mainClass>
+				</configuration>
+			</plugin>
+			
+		</plugins>
+	</build>
+</project>
